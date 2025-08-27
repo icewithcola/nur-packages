@@ -1,7 +1,9 @@
 {
   pkgs ? import <nixpkgs> { },
 }:
-
+let
+  files = builtins.attrNames (builtins.readDir ./pkgs);
+in
 {
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
